@@ -27,8 +27,8 @@ from platform_app.apis import router as platfrom_router
 
 api = NinjaAPI()
 
-api.add_router("shop/", platfrom_router)
+api.add_router("/shop", platfrom_router)
 
 urlpatterns = [
-    path('/', api.urls),
+    path('', api.urls),
 ]

@@ -1,4 +1,8 @@
+# from django.db import transaction
+
 from ninja import Router, Schema
+from platform_app.Services import *
+
 
 router = Router()
 
@@ -11,7 +15,10 @@ router = Router()
 
 ## Code 200
 class Success(Schema) :
-    message: dict
+    pk : int
+    name : str
+    option_set : list
+    tag_set : list
 
 ## Code 201
 class Created(Schema) :
@@ -39,10 +46,10 @@ class InputData(Schema) :
 
 
 ## 상품 리스트 요청 API
-@router.get('/products',response={200:Success, 400:Error})
-def request_item(request, data:InputData) :
+@router.get('/products/{pk_id}',response={200:Success, 400:Error})
+def request_item(request, pk_id:int, data:InputData) :
 
-    print(data.dict())
+    
 
     message = {
         "message": "API 완료"
@@ -54,34 +61,22 @@ def request_item(request, data:InputData) :
 
 ## 상품 등록 API 
 @router.post('/products',response={200:Success, 400:Error})
+# @transaction.atomic
 def create_item(request, data:InputData) :
 
-    print(data.dict())
+    res_code, header, option_set, tag_set = PlatService.insert_item_data(data.dict())
 
     message = {
         "message": "API 완료"
     }
 
-    return  200, {'message': message}
+    return  res_code, {'pk': header.id, 'name':header.name, 'option_set':option_set, 'tag_set':tag_set}
 
 
 
 ## 상품 수정 API
-@router.patch('/products',response={200:Success, 400:Error})
-def modify_item(request, data:InputData) :
-
-    print(data.dict())
-
-    message = {
-        "message": "API 완료"
-    }
-
-    return  200, {'message': message}
-
-
-## 상품 삭제 API
-@router.patch('/products',response={200:Success, 400:Error})
-def modify_item(request, data:InputData) :
+@router.patch('/products/{pk_id}',response={200:Success, 400:Error})
+def modify_item(request, pk_id:int, data:InputData) :
 
     print(data.dict())
 

@@ -30,11 +30,11 @@ jobs: # Workflow 세부 작업 설정
         ls 
         ls -al
         pwd
-        pip install -r /Dockerfiles/py3-lib/requirements.txt
+        pip install -r ./Dockerfiles/py3-lib/requirements.txt
 
         
     - name: Run Tests
       run: |
         ls -al
         pwd
-        python manage.py /backend/runserver
+        python manage.py ./backend/runserver

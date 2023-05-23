@@ -37,4 +37,5 @@ jobs: # Workflow 세부 작업 설정
       run: |
         ls -al
         pwd
-        python manage.py ./backend/runserver
+        cd ./backend
+        python manage.py runserver

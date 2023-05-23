@@ -28,9 +28,10 @@ jobs: # Workflow 세부 작업 설정
     - name: Install Dependencies with Requirements.txt
       run: |
 
-        pip install -r ./Dockerfiles/py3-lib/requirements.txt
+        pip install -r /Dockerfiles/py3-lib/requirements.txt
 
         
     - name: Run Tests
       run: |
-        python manage.py runserver
+      
+        python manage.py /backend/runserver

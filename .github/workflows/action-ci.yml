@@ -31,7 +31,7 @@ jobs: # Workflow 세부 작업 설정
         pip install -r /Dockerfiles/py3-lib/requirements.txt
 
         
-    - name: Run Tests
+    - name: Django Run Test
       run: |
-      
+
         python manage.py /backend/runserver

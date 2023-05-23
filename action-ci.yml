@@ -34,4 +34,4 @@ jobs: # Workflow 세부 작업 설정
         
     - name: Run Tests
       run: |
-        python manage.py runserver
+        python manage.py /backend/runserver

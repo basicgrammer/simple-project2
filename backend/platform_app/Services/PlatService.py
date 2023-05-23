@@ -95,13 +95,6 @@ class PlatService :
         option_set_data = []
         tag_set_data = []
 
-        # print(combine_data1.id)
-        # print(combine_data1.name)
-
-        # print(parser_data)
-        # response_data['pk'] = combine_data1.id
-        # response_data['name'] = combine_data1.name
-
 
         
         for index in response_data['option_set'] :

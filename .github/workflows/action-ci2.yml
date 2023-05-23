@@ -38,4 +38,4 @@ jobs: # Workflow 세부 작업 설정
         ls -al
         pwd
         cd ./backend
-        python manage.py runserver
+        python manage.py test platform_app
